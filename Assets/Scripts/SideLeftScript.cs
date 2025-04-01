@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using System.IO;
 
 public class SideLeftScript : MonoBehaviour
 {
@@ -13,11 +15,22 @@ public class SideLeftScript : MonoBehaviour
     public bool isCat = false;
     public bool isCar = false;
 
-    void FixedUpdate()
+    public TextMeshProUGUI sucessText;
+    public GameObject backgroundMessage;
+
+    void Update()
     {
         if (isFlower && isHuman && isTree && isRobot1 && isRobot2 && isCat && isCar == true)
         {
+            sucessText.gameObject.SetActive(true);
+            backgroundMessage.gameObject.SetActive(true);
+
+            if(Input.GetKeyDown(KeyCode.Space))
+            {  
+
             SceneManager.LoadScene("Test 2");
+
+            }
         }
     }
 
@@ -52,5 +65,7 @@ public class SideLeftScript : MonoBehaviour
             isRobot2 = true;
         }
     }
+
+   
 
 }
